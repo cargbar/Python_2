@@ -13,3 +13,4 @@ def get_data_from_api():
     else:
         print("Error al obtener los datos de la API.")
         return None
+    
