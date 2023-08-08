@@ -1,7 +1,7 @@
-import covid_api
+import sports_api
 
 def main_menu():
-    print("1. Mostrar resumen global COVID-19")
+    print("1. Mostrar equipos de un deporte")
     print("2. Salir")
 
 if __name__ == '__main__':
@@ -10,15 +10,14 @@ if __name__ == '__main__':
         choice = input("Elija una opción: ")
         
         if choice == '1':
-            summary = covid_api.get_summary()
-            global_summary = summary['Global']
-            print("Global COVID-19 Summary:")
-            print("Total confirmed:", global_summary['TotalConfirmed'])
-            print("Total deaths:", global_summary['TotalDeaths'])
+            sport = input("Ingrese el nombre del deporte: ")
+            teams_data = sports_api.get_teams(sport)
+            print(f"Equipos en {sport}:")
+            for team in teams_data['teams']:
+                print(team['strTeam'])
         elif choice == '2':
             print("Saliendo...")
             break
         else:
             print("Opción no válida. Intente nuevamente.")
-
 
